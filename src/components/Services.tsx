@@ -52,7 +52,7 @@ const Services: React.FC = () => {
       description: 'Optimized WordPress hosting with staging, auto-updates, and enhanced security.',
       features: ['Pre-installed WordPress', 'Staging & Cloning', 'Auto Updates', 'Enhanced Security'],
       price: 'Starting at ₹59/month',
-      link: 'https://cp.servernest.in/domain-required?p=246611&t=1'
+      link: 'https://cp.servernest.in/order-wordpress-hosting'
     },
     {
       icon: Smartphone,
