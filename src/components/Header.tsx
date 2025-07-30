@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             <img 
               src="/src/assets/ServerNest_Logo.png" 
               alt="ServerNest Logo" 
-              className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+              className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
               onError={(e) => {
                 // Fallback to text logo if image fails to load
                 const target = e.target as HTMLImageElement;
@@ -50,12 +50,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 fallback.className = 'flex items-center space-x-2';
                 fallback.innerHTML = `
                   <div class="relative">
-                    <svg class="h-8 w-8 text-blue-500 group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="h-10 w-10 text-blue-500 group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                     </svg>
                     <div class="absolute -inset-1 bg-blue-500/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  <span class="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                  <span class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     ServerNest
                   </span>
                 `;
@@ -123,15 +123,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-16 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-white/20 dark:border-gray-700/30 shadow-lg">
-            <div className="px-4 py-6 space-y-4">
+          <div className="lg:hidden fixed top-16 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-white/20 dark:border-gray-700/30 shadow-lg z-40">
+            <div className="px-4 py-6 space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {/* Mobile Navigation */}
               <nav className="space-y-3">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
+                    className={`flex items-center w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
                       currentPage === item.id
                         ? 'bg-blue-500/20 text-blue-600 dark:text-blue-400'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
@@ -146,23 +146,32 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
               <div className="pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center space-x-3 w-full px-4 py-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300"
                 >
-                  {isDark ? (
-                    <Sun className="h-5 w-5 text-yellow-500" />
-                  ) : (
-                    <Moon className="h-5 w-5 text-gray-600" />
-                  )}
-                  <span className="text-gray-700 dark:text-gray-300">
-                    {isDark ? 'Light Mode' : 'Dark Mode'}
-                  </span>
+                  <div className="flex items-center space-x-3">
+                    {isDark ? (
+                      <Sun className="h-5 w-5 text-yellow-500" />
+                    ) : (
+                      <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                    )}
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                    </span>
+                  </div>
+                  <div className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 ${
+                    isDark ? 'bg-blue-500' : 'bg-gray-300'
+                  }`}>
+                    <div className={`w-4 h-4 rounded-full bg-white transition-transform duration-300 ${
+                      isDark ? 'translate-x-6' : 'translate-x-0'
+                    }`}></div>
+                  </div>
                 </button>
                 
                 <a
                   href="https://cp.servernest.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                  className="flex items-center justify-center space-x-2 w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
                 >
                   <span className="font-medium">Client Area</span>
                   <ExternalLink className="h-4 w-4" />

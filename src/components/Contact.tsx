@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, MessageSquare, Send, Clock } from 'lucide-react';
+import { emailService } from '../services/emailService';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,36 +9,45 @@ const Contact: React.FC = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
     
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Contact Form: ${formData.subject || 'General Inquiry'}`);
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Subject: ${formData.subject}
-
-Message:
-${formData.message}
-
----
-Sent from ServerNest Contact Form
-    `);
-    
-    // Send to both email addresses
-    const mailtoLink = `mailto:info@servernest.in,servernest24@gmail.com?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
-    
-    // Show success message and reset form
-    alert('Thank you for your message! Your email client will open to send the message. We will get back to you within 24 hours.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      const result = await emailService.sendEmail(formData);
+      
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: result.message
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.message
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again or contact us directly at info@servernest.in'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -110,6 +120,17 @@ Sent from ServerNest Contact Form
               Send us a Message
             </h2>
             
+            {/* Status Message */}
+            {submitStatus.type && (
+              <div className={`mb-6 p-4 rounded-xl border ${
+                submitStatus.type === 'success'
+                  ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200'
+                  : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
+              }`}>
+                <p className="text-sm font-medium">{submitStatus.message}</p>
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -122,6 +143,7 @@ Sent from ServerNest Contact Form
                     value={formData.name}
                     onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                     className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-white/30 dark:border-gray-700/30 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="Your full name"
                   />
@@ -137,6 +159,7 @@ Sent from ServerNest Contact Form
                     value={formData.email}
                     onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                     className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-white/30 dark:border-gray-700/30 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="your@email.com"
                   />
@@ -152,6 +175,7 @@ Sent from ServerNest Contact Form
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
+                  disabled={isSubmitting}
                   className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-white/30 dark:border-gray-700/30 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                 >
                   <option value="">Select a subject</option>
@@ -172,6 +196,7 @@ Sent from ServerNest Contact Form
                   value={formData.message}
                   onChange={handleInputChange}
                   required
+                  disabled={isSubmitting}
                   rows={6}
                   className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-white/30 dark:border-gray-700/30 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Tell us how we can help you..."
@@ -180,10 +205,20 @@ Sent from ServerNest Contact Form
               
               <button
                 type="submit"
-                className="group flex items-center justify-center space-x-2 w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                disabled={isSubmitting}
+                className="group flex items-center justify-center space-x-2 w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100"
               >
-                <span>Send Message</span>
-                <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </>
+                )}
               </button>
             </form>
           </div>
