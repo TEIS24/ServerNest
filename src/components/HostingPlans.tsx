@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Check, Star, Zap, ExternalLink, Cloud, Server, Globe, Shield } from 'lucide-react';
 
 const HostingPlans: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('web-hosting');
+  const [activeCategory, setActiveCategory] = useState('wordpress');
 
   const categories = [
     { id: 'wordpress', label: 'WordPress Hosting', icon: Globe },
