@@ -16,9 +16,27 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Contact Form: ${formData.subject || 'General Inquiry'}`);
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+
+---
+Sent from ServerNest Contact Form
+    `);
+    
+    // Send to both email addresses
+    const mailtoLink = `mailto:info@servernest.in,servernest24@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+    
+    // Show success message and reset form
+    alert('Thank you for your message! Your email client will open to send the message. We will get back to you within 24 hours.');
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 

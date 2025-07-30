@@ -9,6 +9,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Services from './components/Services';
 import Testimonials from './components/Testimonials';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsConditions from './components/TermsConditions';
+import RefundPolicy from './components/RefundPolicy';
 import { ThemeProvider } from './context/ThemeContext';
 import AIChat from './components/AIChat';
 
@@ -65,6 +68,30 @@ function App() {
           <>
             <div className="pt-20">
               <Services />
+            </div>
+          </>
+        );
+      case 'privacy-policy':
+        return (
+          <>
+            <div className="pt-20">
+              <PrivacyPolicy />
+            </div>
+          </>
+        );
+      case 'terms-conditions':
+        return (
+          <>
+            <div className="pt-20">
+              <TermsConditions />
+            </div>
+          </>
+        );
+      case 'refund-policy':
+        return (
+          <>
+            <div className="pt-20">
+              <RefundPolicy />
             </div>
           </>
         );

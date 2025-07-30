@@ -16,12 +16,13 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
   ];
 
   const services = [
-    'Shared Hosting',
-    'Unlimited Hosting',
-    'Premium Hosting',
-    'Domain Registration',
-    'SSL Certificates',
-    'Website Migration'
+    { name: 'Web Hosting', link: 'https://cp.servernest.in/order-hosting' },
+    { name: 'WordPress Hosting', link: 'https://cp.servernest.in/domain-required?p=246611&t=1' },
+    { name: 'Linux Hosting', link: 'https://cp.servernest.in/domain-required?p=245569&t=1' },
+    { name: 'Cloud Hosting', link: 'https://cp.servernest.in/build-server' },
+    { name: 'VPS Servers', link: 'https://cp.servernest.in/order-vps' },
+    { name: 'Domain Registration', link: 'https://cp.servernest.in/domain-search' },
+    { name: 'SSL Certificates', link: 'https://cp.servernest.in/order-ssl' }
   ];
 
   const support = [
@@ -127,9 +128,14 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className="text-gray-300 hover:text-blue-400 transition-colors duration-300 cursor-pointer">
-                    {service}
-                  </span>
+                  <a
+                    href={service.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                  >
+                    {service.name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -232,9 +238,24 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             </div>
             
             <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <span className="hover:text-blue-400 cursor-pointer transition-colors duration-300">Privacy Policy</span>
-              <span className="hover:text-blue-400 cursor-pointer transition-colors duration-300">Terms of Service</span>
-              <span className="hover:text-blue-400 cursor-pointer transition-colors duration-300">Cookie Policy</span>
+              <button
+                onClick={() => setCurrentPage('privacy-policy')}
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-300"
+              >
+                Privacy Policy
+              </button>
+              <button
+                onClick={() => setCurrentPage('terms-conditions')}
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-300"
+              >
+                Terms of Service
+              </button>
+              <button
+                onClick={() => setCurrentPage('refund-policy')}
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-300"
+              >
+                Refund Policy
+              </button>
             </div>
           </div>
         </div>

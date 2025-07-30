@@ -9,58 +9,66 @@ const Services: React.FC = () => {
     {
       icon: Server,
       title: 'Web Hosting',
-      description: 'Reliable shared hosting with cPanel, perfect for personal websites and small businesses.',
-      features: ['Free SSL Certificate', 'One-Click WordPress', '99.9% Uptime', '24/7 Support'],
-      price: 'Starting at ₹99/month'
+      description: 'Powerful market-leading technology with user-friendly control panel and 70+ one-click install apps.',
+      features: ['70+ One-Click Apps', 'UK Data Centre', 'Windows/Linux Choice', 'Friendly Support'],
+      price: 'Starting at ₹59/month',
+      link: 'https://cp.servernest.in/order-hosting'
     },
     {
       icon: Database,
       title: 'VPS Hosting',
-      description: 'Scalable virtual private servers with root access and dedicated resources.',
-      features: ['Full Root Access', 'SSD Storage', 'Multiple OS Options', 'Instant Setup'],
-      price: 'Starting at ₹999/month'
+      description: 'High-performance virtual private servers with up to 16GB RAM and dedicated resources.',
+      features: ['Up to 16GB DDR4 RAM', 'Up to 8 Core CPU', '200GB SSD Storage', '1 Tbps Anti-DDoS'],
+      price: 'Starting at ₹1,499/month',
+      link: 'https://cp.servernest.in/order-vps'
     },
     {
       icon: Cloud,
       title: 'Cloud Hosting',
-      description: 'High-performance cloud infrastructure with auto-scaling capabilities.',
-      features: ['Auto Scaling', 'Load Balancing', 'CDN Integration', 'API Access'],
-      price: 'Starting at ₹1,999/month'
+      description: 'Managed cloud hosting optimized for maximum speed & reliability with choice of providers.',
+      features: ['AWS & Google Cloud', '60+ Global Locations', 'Advanced DDoS Protection', 'Free SSL'],
+      price: 'Starting at ₹1,116/month',
+      link: 'https://cp.servernest.in/build-server'
     },
     {
       icon: Globe,
       title: 'Domain Registration',
-      description: 'Register your perfect domain name with competitive pricing and easy management.',
-      features: ['Free WHOIS Privacy', 'DNS Management', 'Domain Forwarding', 'Bulk Registration'],
-      price: 'Starting at ₹299/year'
+      description: 'Find your perfect domain with 100s of top-level domains and privacy options.',
+      features: ['100s of TLDs', 'Privacy Options', 'DNS Management', 'Simple Control Panel'],
+      price: 'Starting at ₹907/year',
+      link: 'https://cp.servernest.in/domain-search'
     },
     {
       icon: Shield,
       title: 'SSL Certificates',
-      description: 'Secure your website with industry-standard SSL certificates for enhanced trust.',
-      features: ['256-bit Encryption', 'Browser Trust', 'Warranty Protection', 'Easy Installation'],
-      price: 'Starting at ₹999/year'
+      description: 'Secure your site and improve search performance with padlock and HTTPS URL.',
+      features: ['Free SSL Available', 'Extended SSL Options', 'Improve SEO', 'Easy Installation'],
+      price: 'Starting at ₹3,299/year',
+      link: 'https://cp.servernest.in/order-ssl'
     },
     {
       icon: Code,
-      title: 'Website Development',
-      description: 'Professional website development services from design to deployment.',
-      features: ['Custom Design', 'Responsive Layout', 'SEO Optimized', 'CMS Integration'],
-      price: 'Starting at ₹19,999'
+      title: 'WordPress Hosting',
+      description: 'Optimized WordPress hosting with staging, auto-updates, and enhanced security.',
+      features: ['Pre-installed WordPress', 'Staging & Cloning', 'Auto Updates', 'Enhanced Security'],
+      price: 'Starting at ₹59/month',
+      link: 'https://cp.servernest.in/domain-required?p=246611&t=1'
     },
     {
       icon: Smartphone,
-      title: 'Mobile App Hosting',
-      description: 'Specialized hosting solutions for mobile applications and APIs.',
-      features: ['API Hosting', 'Database Support', 'Push Notifications', 'Analytics'],
-      price: 'Starting at ₹1,499/month'
+      title: 'Linux Hosting',
+      description: 'Reliable Linux hosting with SSD storage, unlimited bandwidth, and website builder.',
+      features: ['SSD Storage', 'Unlimited Bandwidth', 'Website Builder', 'MySQL Databases'],
+      price: 'Starting at ₹59/month',
+      link: 'https://cp.servernest.in/domain-required?p=245569&t=1'
     },
     {
-      icon: Lock,
-      title: 'Security Services',
-      description: 'Comprehensive security solutions including malware scanning and DDoS protection.',
-      features: ['Malware Scanner', 'DDoS Protection', 'Firewall Setup', 'Security Monitoring'],
-      price: 'Starting at ₹599/month'
+      icon: Headphones,
+      title: '24/7 Support',
+      description: 'Expert support available round the clock via multiple channels for all your needs.',
+      features: ['Live Chat', 'Email Support', 'Phone Support', 'Knowledge Base'],
+      price: 'Always Free',
+      link: 'https://tawk.to/chat/6788f045825083258e065141/1ihnel4bf'
     }
   ];
 
@@ -120,9 +128,14 @@ const Services: React.FC = () => {
               </div>
 
               {/* CTA Button */}
-              <button className="w-full py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-blue-500/30 text-gray-700 dark:text-gray-300 rounded-xl font-semibold text-sm hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 transform hover:scale-105">
-                Learn More
-              </button>
+              <a
+                href={service.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-blue-500/30 text-gray-700 dark:text-gray-300 rounded-xl font-semibold text-sm hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 transform hover:scale-105 text-center"
+              >
+                Get Started
+              </a>
             </div>
           ))}
         </div>
@@ -138,12 +151,20 @@ const Services: React.FC = () => {
               that perfectly match your specific requirements and budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+              <a
+                href="mailto:sales@servernest.in"
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              >
                 Get Custom Quote
-              </button>
-              <button className="px-8 py-4 bg-white/20 dark:bg-gray-800/30 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 text-gray-700 dark:text-gray-300 rounded-xl font-semibold text-lg hover:bg-white/30 dark:hover:bg-gray-700/40 transition-all duration-300">
+              </a>
+              <a
+                href="https://tawk.to/chat/6788f045825083258e065141/1ihnel4bf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-white/20 dark:bg-gray-800/30 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 text-gray-700 dark:text-gray-300 rounded-xl font-semibold text-lg hover:bg-white/30 dark:hover:bg-gray-700/40 transition-all duration-300"
+              >
                 Schedule Consultation
-              </button>
+              </a>
             </div>
           </div>
         </div>
