@@ -11,7 +11,6 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import { ThemeProvider } from './context/ThemeContext';
 import AIChat from './components/AIChat';
-import TawkToChat from './components/TawkToChat';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -91,7 +90,6 @@ function App() {
         </main>
         <Footer setCurrentPage={setCurrentPage} />
         <AIChat />
-        <TawkToChat />
       </div>
     </ThemeProvider>
   );
