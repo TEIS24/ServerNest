@@ -408,12 +408,12 @@ const HostingPlans: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="https://servernest.in"
+              href="https://tawk.to/chat/6788f045825083258e065141/1ihnel4bf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
             >
-              <span>Visit ServerNest.in</span>
+              <span>Live Chat Support</span>
               <ExternalLink className="h-4 w-4" />
             </a>
             
