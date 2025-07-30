@@ -60,7 +60,7 @@ const Services: React.FC = () => {
       description: 'Reliable Linux hosting with SSD storage, unlimited bandwidth, and website builder.',
       features: ['SSD Storage', 'Unlimited Bandwidth', 'Website Builder', 'MySQL Databases'],
       price: 'Starting at ₹59/month',
-      link: 'https://cp.servernest.in/domain-required?p=245569&t=1'
+      link: 'https://cp.servernest.in/order-hosting'
     },
     {
       icon: Headphones,
