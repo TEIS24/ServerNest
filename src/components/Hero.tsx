@@ -58,12 +58,12 @@ const Hero: React.FC = () => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
           <a
             href="https://servernest.in/shared-hosting"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="group flex items-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-base sm:text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center justify-center"
           >
             <span>Get Started Now</span>
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
           
           <button 
             onClick={() => document.getElementById('hosting-plans')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-white/10 dark:bg-gray-800/30 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 text-gray-700 dark:text-gray-300 rounded-xl font-semibold text-lg hover:bg-white/20 dark:hover:bg-gray-700/40 transition-all duration-300 transform hover:scale-105"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 dark:bg-gray-800/30 backdrop-blur-lg border border-white/30 dark:border-gray-700/30 text-gray-700 dark:text-gray-300 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/20 dark:hover:bg-gray-700/40 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center"
           >
             View Plans
           </button>
