@@ -17,8 +17,8 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
 
   const services = [
     { name: 'Web Hosting', link: 'https://cp.servernest.in/order-hosting' },
-    { name: 'WordPress Hosting', link: 'https://cp.servernest.in/domain-required?p=246611&t=1' },
-    { name: 'Linux Hosting', link: 'https://cp.servernest.in/domain-required?p=245569&t=1' },
+    { name: 'WordPress Hosting', link: 'https://cp.servernest.in/order-wordpress-hosting' },
+    { name: 'Linux Hosting', link: 'https://cp.servernest.in/order-hosting' },
     { name: 'Cloud Hosting', link: 'https://cp.servernest.in/build-server' },
     { name: 'VPS Servers', link: 'https://cp.servernest.in/order-vps' },
     { name: 'Domain Registration', link: 'https://cp.servernest.in/domain-search' },
