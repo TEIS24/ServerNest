@@ -258,7 +258,7 @@ const Contact: React.FC = () => {
               call our emergency hotline available 24/7.
             </p>
             <a
-              href="tel:+91XXXXXXXXXX"
+              href="tel:+917972930243"
               className="inline-block px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-lg font-semibold hover:from-red-600 hover:to-orange-600 transition-all duration-300"
             >
               Emergency Hotline
