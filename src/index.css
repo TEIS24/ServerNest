@@ -5,10 +5,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
     @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300;
+    overflow-x: hidden;
   }
 }
 
@@ -153,6 +155,11 @@ p {
 
 /* Responsive Design Helpers */
 @media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
   .text-responsive {
     @apply text-sm;
   }
@@ -163,5 +170,36 @@ p {
   
   .m-responsive {
     @apply m-2;
+  }
+  
+  /* Mobile-specific adjustments */
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+  
+  .hero-title {
+    @apply text-4xl;
+  }
+}
+
+/* Prevent horizontal scroll */
+* {
+  box-sizing: border-box;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+/* Mobile chat adjustments */
+@media (max-width: 640px) {
+  .chat-container {
+    width: calc(100vw - 2rem) !important;
+    height: calc(100vh - 8rem) !important;
+    max-height: 500px;
   }
 }
