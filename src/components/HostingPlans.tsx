@@ -5,13 +5,13 @@ const HostingPlans: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('web-hosting');
 
   const categories = [
-    { id: 'web-hosting', label: 'Web Hosting', icon: Server },
     { id: 'wordpress', label: 'WordPress Hosting', icon: Globe },
     { id: 'linux', label: 'Linux Hosting', icon: Server },
     { id: 'cloud', label: 'Cloud Hosting', icon: Cloud },
     { id: 'vps', label: 'VPS Servers', icon: Server },
     { id: 'domains', label: 'Domain Names', icon: Globe },
-    { id: 'ssl', label: 'SSL Certificates', icon: Shield }
+    { id: 'ssl', label: 'SSL Certificates', icon: Shield },
+    { id: 'web-hosting', label: 'Web Hosting', icon: Server }
   ];
 
   const webHostingPlans = [
