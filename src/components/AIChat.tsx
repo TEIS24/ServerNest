@@ -121,7 +121,7 @@ const AIChat: React.FC = () => {
           </div>
           <div>
             <h3 className="font-semibold">NestBot AI</h3>
-            <p className="text-xs opacity-80">Powered by OpenAI • ServerNest Assistant</p>
+            <p className="text-xs opacity-80">ServerNest AI Assistant</p>
           </div>
         </div>
         
@@ -162,10 +162,24 @@ const AIChat: React.FC = () => {
                 }`}>
                   <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                     message.isBot 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
+                      ? 'bg-white p-1' 
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                   }`}>
-                    {message.isBot ? <Bot className="h-4 w-4" /> : <User className="h-4 w-4" />}
+                    {message.isBot ? (
+                      <img 
+                        src="/src/assets/ServerNest_Icon.png" 
+                        alt="NestBot" 
+                        className="w-6 h-6 rounded-full"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const fallback = document.createElement('div');
+                          fallback.className = 'w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center';
+                          fallback.innerHTML = '<svg class="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>';
+                          target.parentNode?.appendChild(fallback);
+                        }}
+                      />
+                    ) : <User className="h-4 w-4" />}
                   </div>
                   
                   <div className={`px-4 py-3 rounded-2xl ${
@@ -189,8 +203,20 @@ const AIChat: React.FC = () => {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="flex items-start space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center">
-                    <Bot className="h-4 w-4" />
+                  <div className="w-8 h-8 rounded-full bg-white p-1 flex items-center justify-center">
+                    <img 
+                      src="/src/assets/ServerNest_Icon.png" 
+                      alt="NestBot" 
+                      className="w-6 h-6 rounded-full"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = document.createElement('div');
+                        fallback.className = 'w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center';
+                        fallback.innerHTML = '<svg class="h-3 w-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>';
+                        target.parentNode?.appendChild(fallback);
+                      }}
+                    />
                   </div>
                   <div className="bg-gray-100 dark:bg-gray-700 px-4 py-3 rounded-2xl">
                     <div className="flex items-center space-x-2">
@@ -230,7 +256,7 @@ const AIChat: React.FC = () => {
             </div>
             <div className="flex items-center justify-between mt-2">
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                🤖 Powered by OpenAI GPT • Advanced AI Knowledge Base
+                🤖 ServerNest AI Assistant • Advanced Knowledge Base
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 24/7 Support: +91 7972930243
